@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원가입</title>
+        <style>
+            video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+            }
+
+            .jb-box {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                margin: 0px auto;
+                position: absolute;
+                z-index: -1;
+                filter: blur(3px) brightness(60%);
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: azure;
+            }
+
+            .container {
+                width: 600px;
+                height: 500px;
+                position: absolute;
+                margin: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(22, 22, 21, 0.712);
+                text-align: center;
+                padding: 50px;
+                border-radius: 4px;
+            }
+
+            .signUpBtn {
+                font-size: 1em;
+                border: 0px;
+                width: 50%;
+                height: 50px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                /* background-color: transparent; */
+                background-color: #ffc312;
+                color: black;
+                border-radius: 10px;
+                cursor: pointer;
+                font-weight: 800;
+            }
+
+            .signUpBtn:hover {
+                background-color: white;
+            }
+
+            h3 {
+                float: left;
+                color: white;
+                font-size: 30px;
+                margin-top: 0px;
+                padding-bottom: 20px;
+                margin-right: 300px;
+            }
+
+            input {
+                padding: 6px;
+            }
+
+            .text-field {
+                font-size: 1em;
+                width: 80%;
+                height: 30px;
+                margin-bottom: 12px;
+                border: none;
+                border-radius: 3px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <form action="">
+                <h3>Sign Up</h3>
+                <input type="text" id="id" class="text-field" placeholder="아이디 입력 (6~20자)" /> <br />
+                <input type="password" id="pw" class="text-field" placeholder="비밀번호 입력(문자,숫자,특수문자 포함 8~20자)" /> <br />
+                <input type="password" id="pwCheck" class="text-field" placeholder="비밀번호 재입력" /> <br />
+                <input type="email" id="email" class="text-field" placeholder="이메일 주소" /><br />
+                <input type="text" id="nickname" class="text-field" placeholder="닉네임(2글자 이상 20글자 미만 설정 가능)" /> <br />
+                <input type="text" id="addr" class="text-field" placeholder="주소" /> <br />
+                <a href="http://127.0.0.1:5500/FinalKorini/Korini/login.html" target="_self" id="domain">
+                    <button type="button" class="signUpBtn">Sign Up</button>
+                </a>
+            </form>
+        </div>
+        <div class="jb-box">
+            <section class="">
+                <video src="/FinalKorini/image/korini/서울 도심 하이퍼랩스.mp4" muted autoplay loop></video>
+                <div class="wrap"></div>
+                <div class="info"></div>
+                <div class="sns"></div>
+            </section>
+        </div>
+        <script>
+            document.querySelector(".signUpBtn").addEventListener("click", function () {
+                const id = document.getElementById("id").value;
+                const pw = document.getElementById("pw").value;
+                const pwCheck = document.getElementById("pwCheck").value;
+                const email = document.getElementById("email").value;
+                const nickname = document.getElementById("nickname").value;
+                const addr = document.getElementById("addr").value;
+
+                if (id == "") {
+                    alert("아이디를 입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/signUp.html";
+                    return;
+                } else if (pw == "") {
+                    alert("비밀번호를 입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/signUp.html";
+                    return;
+                } else if (pwCheck == "") {
+                    alert("비밀번호를 재입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/signUp.html";
+                    return;
+                } else if (email == "") {
+                    alert("이메일 주소를 입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/signUp.html";
+                    return;
+                } else if (nickname == "") {
+                    alert("닉네임을 입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/signUp.html";
+                    return;
+                } else if (addr == "") {
+                    alert("주소를 입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/signUp.html";
+                    return;
+                } else if (pw != pwCheck) {
+                    alert("입력하신 비밀번호가 일치하지않습니다");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/signUp.html";
+                    return;
+                } 
+            });
+        </script>
+    </body>
+</html>

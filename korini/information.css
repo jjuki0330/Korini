@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.category>ul>li>a>.material-symbols-outlined, .toplist>.material-symbols-outlined{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+  margin-right: 4px;
+}
+
+
+/* 왼쪽 category메뉴바 */
+.clear::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.category{
+    width: 200px;
+    height: 1550px;
+    background-color: #ffc312;
+    float:left;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    text-align: left;
+    box-shadow: 3px 3px 3px 3px rgba(128, 128, 128, 0.551);
+    transition: all ease 0.3s;
+}
+.category:hover{
+    width: 250px;
+}
+#sorae {
+    margin-top: 70px;
+    margin-left: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    width: 200px;
+    height: max-content;
+    color: rgb(90, 28, 34);
+}
+#category {
+    margin-top: 120px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(90, 28, 34);
+    border-bottom: 2px solid #d7a40a;
+}
+
+.category > ul > li {
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 30px;
+    height: 50px;
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all ease 0.3s;
+    text-align: left;
+}
+a{
+    color: rgb(90, 28, 34);
+    text-decoration: none;
+}
+.category > ul > li:hover{
+   background-color: white;
+}
+.category > ul > .yeah{
+    background-color: white;
+    color: rgb(90, 61, 28);
+    /* text-shadow: 2px 2px 2px gray; */
+}
+
+/* category박스를 제외한 모든 div를 포함하는 div */
+.info {
+    width: 1400px;
+    height: 1550px;
+    float: left;
+    border: transparent;
+    margin-top: 18px;
+    border-radius: 5px;
+}
+.toplistSlid{
+    width: 1200px;
+    height: 400px;
+    border-bottom: 4px solid #ffbf00;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+
+    position: relative;
+}
+/* toplist div */
+.toplist {
+    width: 430px;
+    height: 300px;
+    box-shadow: 3px 0px 3px 3px rgba(162, 162, 162, 0.505);
+    border-radius: 10px;
+}
+.toplist > #topTitle {
+    width: 420px;
+    height: max-content;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 5px;
+    border-bottom: 3px solid #ffbf00;
+
+
+}
+.toplist>.material-symbols-outlined{
+    font-size: 35px;
+    font-weight: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+}
+.toplist ul{
+    padding-top: 5px;
+    margin: 0 auto;
+}
+.toplist > ul > li {
+    list-style: none;
+    padding:5px 5px;
+    padding-top: 10px;
+    width: 97%;
+    border-bottom: 1px solid rgb(194, 194, 194);
+    font-size: large;
+    font-weight: bold;
+    transition: all ease 0.3s;
+}
+.toplist > ul > li:hover{
+    background-color: rgb(194, 194, 194);
+}
+.toplist > ul > li:nth-of-type(5) {
+    border: transparent;
+}
+.photoslid {
+    width: 500px;
+    height: 300px;
+
+}
+.photoslid img{
+    width:500px;
+    height: 300px;
+    transition: all ease 0.3s;
+    border-radius: 10px;
+}
+
+.line {
+    position: absolute;
+    top: 46px;
+}
+
+/* Allbox table */
+.Allbox {
+    width: 1150px;
+    height: 1050px;
+    border: transparent;
+    margin: 20px auto;
+}
+
+.Allbox > ul > li {
+    width: 1100px;
+    height: 260px;
+    border-bottom: 2px solid rgb(210, 209, 209);  
+    margin-left: 25px;
+    margin-top: 10px;
+    list-style: none;
+}
+.Allbox > ul > li > img {
+    width: 300px;
+    height: 220px;
+    border-radius: 5px;
+    float: left;
+    margin-top: 12px;
+    margin-right: 12px;
+    /* border: 3px solid #ffc312; */
+}
+.about {
+    width: 750px;
+    height: 240px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    vertical-align: middle;
+    position: relative;
+}
+.infobox{
+    width: 400px;
+    height: 100px;
+    /* border: 1px solid black; */
+}
+#grade{
+    width: max-content;
+    font-size: xx-large;
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    /* margin-bottom: 0; */
+    color: #ffbf00;
+}
+#title {
+    float: left;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+#kind{
+    /* position: absolute;*/
+    width: 280px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    float: left;
+    font-weight: bold;
+    color: grey;
+}
+.starSpec{
+    width: 300px;
+    height: max-content;
+    /* border:1px solid black; */
+    float: right;
+    text-align: right;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.starSpec>.material-symbols-outlined{
+    color: rgb(255, 154, 39);
+    font-size: 60px;
+    transition: all ease 0.5s;
+    cursor: pointer;
+
+}
+.starSpec>.material-symbols-outlined.active{
+    font-variation-settings:
+    'FILL' 1,
+   'wght' 400,
+   'GRAD' 0,
+   'opsz' 48;
+}
+.starSpec>#want{
+    color: grey;
+    font-weight: bold;
+}
+#spec{
+    text-align: right;  
+    margin-top: 50px;
+}
+.review{
+    width: 300px;
+    height: 140px;
+    margin-left: 10px;
+    /* border: 1px solid black; */
+}
+#person{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 150px;
+    height: 30px;
+}
+#more{
+    margin-top: 5x;
+    font-size: 15px;
+}
+#viewMore{
+    margin-top: 10px;
+    float: right;
+    border: transparent;
+    background-color: transparent;
+    color: rgb(73, 49, 22);;
+    text-decoration: underline ;
+    font-weight: 20px;
+}
+
+/* up버튼 */
+.upBtn{
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+    border: transparent;
+    border-radius: 50px;
+    background-color: #ffc312;
+}
+.upBtn:hover{
+    background-color: #ffd862;
+}
+.upBtn>.material-symbols-outlined{
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+}

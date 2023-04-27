@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Korini Maps</title>
+    <link rel="stylesheet" href="/FinalKorini/korini/main.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script defer src="./index.js"></script>
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmPPIiY39YwgXNicL51bLlrA1G2arABKg&callback=initMap"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <a href="http://127.0.0.1:5500/FinalKorini/Korini/main.html">
+            <p id="logo">KORINI</p>
+        </a>
+        <a href="http://127.0.0.1:5500/FinalKorini/Korini/editUserInfo.html">
+            <ul id="navi">
+                <a href="http://127.0.0.1:5500/FinalKorini/Korini/list.html">
+                    <li>Community</li>
+                </a>
+                <a href="http://127.0.0.1:5500/FinalKorini/Korini/editUserInfo.html">
+                    <li>My Page</li>
+                </a>
+                <a href="http://127.0.0.1:5500/FinalKorini/Korini/login.html">
+                    <li>Log Out</li>
+                </a>
+            </ul>
+        </a>
+    </div>
+    <p id="mapArea">
+    <div id="map" style="height: 88%; width: 100%; position: absolute;"></div>
+    </p>
+    <div class="btnAll">
+        <button type="button" id="plus" onclick="goBtn()">+</button>
+        <button type="button" id="friend"><img src="/FinalKorini/image/korini/person.png" alt="" /></button>
+        <button type="button" id="sche"><img src="/FinalKorini/image/korini/calendar.PNG" alt="" /></button>
+    </div>
+    <div class="pop_friend">
+        <div class="friends clear">
+            <p id="friends">Members</p>
+            <button type="button" id="save" data-name="소래포구" data-lat="37.4014" data-lng="126.7337">SAVE</button>
+            <div class="line" style="width: 290px; height: 1px; background-color: #ffc312; border: 1px solid#ffc312">
+
+            </div>
+            <ul id="meetF" class="clear">
+
+
+            </ul>
+        </div>
+        <div class="existF clear">
+            <p id="FriendList">Friend List</p>
+            <div class="line" style="width: 290px; background-color: #ffc312; height: 1px; border: 1px solid #ffc312;">
+            </div>
+            <div class="scroll clear">
+                <ul id="existF">
+                    <li id="list1">강미연<button type="button" data-name="강미연" data-lat="37.509" data-lng="126.7086"
+                            onclick="addF(this)">+</button></li>
+                    <li id="list2">성시헌<button type="button" data-name="성시헌" data-lat="37.3432" data-lng="126.6935"
+                            onclick="addF(this)">+</button></li>
+                    <li id="list3">안대현<button type="button" data-name="안대현" data-lat="37.3924" data-lng="126.6392"
+                            onclick="addF(this)">+</button></li>
+                    <li id="list4">홍준희<button type="button" data-name="홍준희" data-lat="37.4912" data-lng="126.7225"
+                            onclick="addF(this)">+</button></li>
+                    <li id="list5">승남이<button type="button" data-name="승남이" data-lat="37.4612" data-lng="126.6225"
+                            onclick="addF(this)">+</button></li>
+                    <li id="list6">팥탁이<button type="button" data-name="팥탁이" data-lat="37.5471" data-lng="126.6532" 
+                            onclick="addF(this)">+</button></li>
+                    <li id="list7">란민트<button type="button" data-name="란민트" data-lat="37.4762" data-lng="126.5999"
+                            onclick="addF(this)">+</button></li>
+                    <li id="list8">서치원<button type="button" data-name="서치원" data-lat="37.4529" data-lng="126.6924"
+                            onclick="addF(this)">+</button></li>
+                    <li id="list8">우영우<button type="button" data-name="우영우" data-lat="37.5029" data-lng="126.7024"
+                            onclick="addF(this)">+</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="loadingContainer">
+        중간 위치를 계산하는 중입니다...
+        <div class="loading-container">
+            <div class="loading"></div>
+            <div id="loading-text">loading</div>
+        </div>
+    </div>
+
+    <div class="all">
+        <a href="http://127.0.0.1:5500/FinalKorini/Korini/information_food.html">
+        <div class="board_wrap">
+            <img src="/FinalKorini/image/korini/소래포구.jfif" alt="" id="imgSR">
+            <div class="write">
+                <p><h2 id="place">< 소래포구></h2></p>
+                <br>
+                <p><h4 id="addr">인천 남동구 장도로 67 (논현동)</h4></p>
+                <p id="point">4.0</p>
+                <p id="star">★★★★☆</p>
+            </div>
+        </div>
+        </a>
+    </div>
+
+    <div class="container" style="display:none;">
+        <div class="afterContainer"></div>
+    </div>
+
+    <div class="bottomBar">
+        <ul id="bottomBars">
+            <li class="busiInfo">주소 : 인천 남동구 인주대로 593 대표전화 : 1588-0001</li>
+            <li class="busiInfo">이메일 : donotcontact@korini.com</li>
+        </ul>
+    </div>
+
+    <script>
+
+        document.querySelector(".btnAll").addEventListener("mouseover", goBtn);
+        document.querySelector(".btnAll").addEventListener("mouseout", outBtn);
+
+        const friend = document.getElementById("friend");
+        const sche = document.getElementById("sche");
+        const btnAll = document.querySelector(".btnAll");
+        const plus = document.querySelector("#plus");
+        let markers = [];
+        let malls = [];
+        let map;
+        let bounds;
+        let infowindow;
+        let deletedLiNum = 9;
+
+        function goBtn() {
+            btnAll.style.setProperty("height", "250px");
+            friend.style.setProperty("bottom", "90px");
+            sche.style.setProperty("bottom", "170px");
+            friend.style.setProperty("transition", "all ease 0.3s");
+            sche.style.setProperty("transition", "all ease 0.3s");
+            plus.classList.toggle("active");
+        }
+        function outBtn() {
+            btnAll.style.setProperty("height", "70px");
+            friend.style.setProperty("bottom", "10px");
+            sche.style.setProperty("bottom", "10px");
+            plus.classList.toggle("active");
+        }
+
+        //친구추가 팝업창 띄었다가 닫기+SAVE버튼이랑 loading창 연결
+        document.getElementById('sche').addEventListener('click', function () {
+            let target = document.querySelector('.pop_friend')
+            target.style.display = 'block';
+        });
+        document.getElementById('save').addEventListener('click', function () {
+            let saveId = document.getElementById('save')
+            let target = document.querySelector('.pop_friend')
+            target.style.display = 'none';
+            let target1 = document.querySelector('.loadingContainer')
+            let map = document.querySelector('#map');
+            map.style.setProperty("filter", "brightness(60%)")
+            target1.style.display = 'block'
+
+            // setTimeout('closePage()', 3000);
+
+            // setTimeout(addF(saveId), 3000);
+
+            //로딩화면 3초간 띄운 후 창 삭제, 도착좌표 찍기, 도착좌표 이동
+            setInterval(() => [closePage(), addG(saveId), moveToarrived()], 3000)
+        });
+
+        //기존 친구 리스트에서 약속멤버리스트에 추가/삭제
+        let num = 0;
+        function addF(obj) {
+            console.log(obj);
+
+            //데이터 객체화
+            console.log(obj);
+            var people = {
+                name: obj.dataset.name,
+                lng: Number(obj.dataset.lng),
+                lat: Number(obj.dataset.lat),
+                label: obj.dataset.label,
+            }
+            malls.push(people);
+
+            //버튼 눌렀을때 함수
+            document.getElementById('meetF').innerHTML += `<li class="li" id="addedList${num}">${people.name}<button type="button" 
+                data-name=${people.name} data-lat=${people.lat} data-lng=${people.lng} onclick="reset('addedList${num}')">X</button></li>`;
+
+            // 부모 엘리먼트 삭제
+            obj.parentElement.remove();
+
+            // 맵 함수
+            let tmpNum = num.toString();
+            let tmpName = malls[num].name;
+            var myLatlng = new google.maps.LatLng(parseFloat(malls[num].lat), parseFloat(malls[num].lng));
+            const marker = new google.maps.Marker({
+                position: myLatlng,
+                label: " ",
+                map: map
+            });
+            markers.push(marker);
+            markers[num].setMap(map);
+
+            marker.addListener("click", () => {
+                map.panTo(marker.position);
+                infowindow.setContent(tmpName);
+                infowindow.open({
+                    anchor: marker,
+                    map
+                });
+            });
+            // });
+            num++;
+            console.log(`markers: ${markers}`);
+        }
+
+        // ㅋㅋ 하드코딩함 도착지점 마커만 이동좌표걸기
+        function addG(obj) {
+            console.log(obj);
+
+            //데이터 객체화
+            console.log(obj);
+            var people = {
+                name: obj.dataset.name,
+                lng: Number(obj.dataset.lng),
+                lat: Number(obj.dataset.lat),
+                label: obj.dataset.label,
+            }
+            malls.push(people);
+
+            console.log(people);
+            console.log(malls);
+
+            let tmpNum = num.toString();
+            let tmpName = malls[num].name;
+            var myLatlng = new google.maps.LatLng(parseFloat(malls[num].lat), parseFloat(malls[num].lng));
+            const marker = new google.maps.Marker({
+                position: myLatlng,
+                label: " ",
+                map: map
+            });
+            markers.push(marker);
+            markers[num].setMap(map);
+
+            marker.addListener("click", () => {
+                location.href = "http://127.0.0.1:5500/FinalKorini/korini/information_food.html"
+                map.panTo(marker.position);
+                infowindow.setContent(tmpName);
+                infowindow.open({
+                    anchor: marker,
+                    map
+                });
+            });
+            // });
+            num++;
+            console.log(`markers: ${markers}`);
+        }
+        function reset(obj) {
+
+            let getLi = document.getElementById(obj);
+            let getName = getLi.innerText.substring(0, 3);
+            let getPerson = '';
+            console.log(`name of this person: ${getName}`);
+            console.log(`malls[0].name: ${malls[0].name}`);
+            console.log(`getLi: ${getLi}`);
+            console.log(malls);
+            for (let i = 0; i < malls.length; i++) {
+                if (malls[i].name == getName) {
+                    getPerson = malls[i];
+                    // malls.splice(i, 1);
+                    markers[i].setMap(null);
+                }
+            }
+            console.log(getPerson.name);
+
+            document.getElementById('existF').innerHTML += `<li class="li" id="list${deletedLiNum}">${getName}<button type="button"
+                data-name=${getPerson.name} data-lat=${getPerson.lat} data-lng=${getPerson.lng} onclick="addF(this)">+</button></li>`;
+            getLi.remove();
+            console.log(malls);
+            deletedLiNum++;
+        }
+        // 로딩화면 함수
+        function closePage() {
+            let loader = document.querySelector('.loadingContainer');
+            let map = document.querySelector('#map');
+            let target2 = document.querySelector('.all');
+            map.style.setProperty("filter", "brightness(100%)")
+            loader.style.display = 'none';
+            target2.style.display='block';
+        }
+
+        // 로딩화면 끝난후 도착좌표에 좌표이동 시키는 함수
+        function moveToarrived() {
+            let arrive = new google.maps.LatLng(37.4014, 126.7337);
+            map.setCenter(arrive);
+            map.panTo(arrive);
+            map.setZoom(14);
+        }
+
+        // map관련 함수들
+        window.initMap = function () {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 37.509, lng: 126.7086 },
+                zoom: 12
+            });
+
+            malls = new google.maps.LatLng[{
+                // { label: "Seong", name: "오이도", lat: 37.3432, lng: 126.6935 }, 
+                // { label: "Kang", name: "석남역", lat: 37.509, lng: 126.7086 },
+                // { label: "Hong", name: "부평역", lat: 37.4912, lng: 126.7225 },
+                // { label: "An", name: "송도", lat: 37.3924, lng: 126.6392 },
+                // { label: "arrived", name: "소래포구", lat: 37.4014, lng: 126.7337 }
+            }];
+
+            bounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(37.4014, 126.7337)
+            );
+
+            infowindow = new google.maps.InfoWindow();
+
+            malls.forEach(({ label, name, lat, lng }) => {
+                const marker = new google.maps.Marker({
+                    position: { lat, lng },
+                    label,
+                    map: map
+                });
+                bounds.extend(marker.position);
+
+                marker.addListener("click", () => {
+                    map.panToBound(marker.position);
+                    infowindow.setContent(name);
+                    infowindow.open({
+                        anchor: marker,
+                        map
+                    });
+                });
+            });
+
+            map.fitBounds(bounds);
+        };
+    </script>
+</body>
+
+</html>

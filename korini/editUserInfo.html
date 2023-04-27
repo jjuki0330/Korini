@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <script defer src="./index.js"></script>
+        <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmPPIiY39YwgXNicL51bLlrA1G2arABKg&callback=initMap"></script>
+        <title>회원정보수정</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: azure;
+            }
+
+            .map {
+                width: 100%;
+                height: 100%;
+                border: 1px solid black;
+                background-color: rgb(27, 27, 151);
+                display: inline-block;
+                z-index: 1;
+                filter: brightness(60%);
+            }
+
+            .container {
+                width: 700px;
+                height: 500px;
+                position: absolute;
+                z-index: 1;
+                margin: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(22, 22, 21, 0.712);
+                text-align: center;
+                padding: 30px;
+                border-radius: 4px;
+            }
+
+            .editBtn {
+                font-size: 1em;
+                border: 0px;
+                width: 30%;
+                height: 50px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                margin-left: 18%;
+                background-color: #ffc312;
+                color: black;
+                border-radius: 10px;
+                cursor: pointer;
+                font-weight: 700;
+                float: left;
+            }
+
+            .cnlBtn {
+                font-size: 1em;
+                border: 0px;
+                width: 30%;
+                height: 50px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                margin-right: 18%;
+                background-color: white;
+                color: black;
+                border-radius: 10px;
+                cursor: pointer;
+                font-weight: 700;
+                float: right;
+            }
+
+            button:hover {
+                background-color: rgb(167, 167, 167);
+            }
+
+            h3 {
+                float: left;
+                color: white;
+                font-size: 30px;
+                margin-top: 0px;
+            }
+
+            input {
+                padding: 6px;
+            }
+
+            .text-field {
+                font-size: 1em;
+                width: 90%;
+                height: 30px;
+                margin-bottom: 12px;
+                border: none;
+                border-radius: 3px;
+            }
+
+            :disabled {
+                background-color: gainsboro;
+            }
+
+            td {
+                color: white;
+            }
+
+            table {
+                float: left;
+                width: 650px;
+                margin-left: 23px;
+            }
+
+            #list {
+                width: 120px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <form action="">
+                <h3>My Information</h3>
+                <table>
+                    <tr>
+                        <td id="list">ID</td>
+                        <td><input type="text" class="text-field" value="korini" disabled /></td>
+                    </tr>
+                    <tr>
+                        <td>PASSWORD</td>
+                        <td><input type="password" id="pw" class="text-field" placeholder="비밀번호 입력(문자,숫자,특수문자 포함 8~20자)" /></td>
+                    </tr>
+                    <tr>
+                        <td>CONFIRM PASSWORD</td>
+                        <td><input type="password" id="pwCheck" class="text-field" placeholder="비밀번호 재입력" /></td>
+                    </tr>
+                    <tr>
+                        <td>EMAIL</td>
+                        <td><input type="email" class="text-field" value="korini@ezen.com" disabled /></td>
+                    </tr>
+                    <tr>
+                        <td>NICKNAME</td>
+                        <td><input type="text" class="text-field" value="코리니" disabled /></td>
+                    </tr>
+                    <tr>
+                        <td>ADDRESS</td>
+                        <td><input type="text" id="addr" class="text-field" placeholder="주소" /></td>
+                    </tr>
+                </table>
+                <span>
+                    <a href="http://127.0.0.1:5500/FinalKorini/Korini/main.html" target="_self" id="domain">
+                        <button type="button" class="editBtn">Save</button>
+                    </a>
+                </span>
+                <span>
+                    <a href="http://127.0.0.1:5500/FinalKorini/Korini/main.html" target="_self" id="domain">
+                        <button type="button" class="cnlBtn">Cancel</button>
+                    </a>
+                </span>
+            </form>
+        </div>
+        <div id="map" style="height: 950px; width: 100%; position: absolute; filter: brightness(50%)"></div>
+        <script>
+            document.querySelector(".editBtn").addEventListener("click", function () {
+                const pw = document.getElementById("pw").value;
+                const pwCheck = document.getElementById("pwCheck").value;
+                const addr = document.getElementById("addr").value;
+
+                if (pw == "") {
+                    alert("비밀번호를 입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/editUserInfo.html";
+                    return;
+                } else if (pwCheck == "") {
+                    alert("비밀번호를 재입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/editUserInfo.html";
+                    return;
+                } else if (addr == "") {
+                    alert("주소를 입력해주세요.");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/editUserInfo.html";
+                    return;
+                } else if (pw != pwCheck) {
+                    alert("입력하신 비밀번호와 일치하지 않습니다");
+                    document.getElementById("domain").href = "http://127.0.0.1:5500/FinalKorini/Korini/editUserInfo.html";
+                    return;
+                }
+            });
+
+            // map관련 함수들
+            window.initMap = function () {
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    center: { lat: 37.5400456, lng: 126.9921017 },
+                    zoom: 10,
+                });
+                const malls = [
+                    { label: "Seong", name: "오이도", lat: 37.3432, lng: 126.6935 },
+                    { label: "Kang", name: "석남역", lat: 37.509, lng: 126.7086 },
+                    { label: "Hong", name: "부평역", lat: 37.4912, lng: 126.7225 },
+                    { label: "An", name: "송도", lat: 37.3924, lng: 126.6392 },
+                    { label: "arrived", name: "소래포구", lat: 37.4014, lng: 126.7337 },
+                ];
+
+                const bounds = new google.maps.LatLngBounds();
+                const infowindow = new google.maps.InfoWindow();
+
+                malls.forEach(({ label, name, lat, lng }) => {
+                    const marker = new google.maps.Marker({
+                        position: { lat, lng },
+                        label,
+                        map: map,
+                    });
+                    bounds.extend(marker.position);
+
+                    marker.addListener("click", () => {
+                        map.panTo(marker.position);
+                        infowindow.setContent(name);
+                        infowindow.open({
+                            anchor: marker,
+                            map,
+                        });
+                    });
+                });
+
+                map.fitBounds(bounds);
+            };
+        </script>
+    </body>
+</html>
